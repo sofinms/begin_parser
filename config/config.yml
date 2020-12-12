@@ -1,0 +1,4 @@
+browser: chrome
+headless: false
+use_profile_directory: false
+use_proxy: false
