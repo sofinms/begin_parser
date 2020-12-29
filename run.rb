@@ -1,15 +1,9 @@
 require 'headless'
 require "selenium-webdriver"
 require 'yaml'
-require 'nokogumbo'
-require 'os'
-require 'json'
-require "sequel"
-require 'mysql2'
-require 'digest/md5'
 
 class BrowserDriver
-	attr_reader :browser_type, :headless, :driver, :start_browser_time
+	attr_reader :browser_type, :headless, :driver
 
 	def initialize settings
 		@use_profile_directory = settings[:use_profile_directory]
@@ -19,10 +13,9 @@ class BrowserDriver
 		@proxy_port = settings[:proxy_port]
 		@use_proxy = settings[:use_proxy]
 		@headless = settings[:headless]
-		@start_browser_time = Time.now
 
 		at_exit do
-			disconnect
+			@driver.exit rescue nil
 		end
 	end
 
@@ -45,7 +38,6 @@ class BrowserDriver
 		  puts "Error: browser not detected in config"
 		  exit
 		end
-		@start_browser_time = Time.now
 		@driver
 	end
 

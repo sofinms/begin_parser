@@ -5,9 +5,3 @@ use_proxy: false
 path_to_profile_dir: "/Users/macbook/Library/Application Support/Google/Chrome/parser2/"
 proxy_address: "194.213.43.166"
 proxy_port: "59316"
-db:
-    adapter: :mysql2
-    host: 127.0.0.1
-    database: 'database_name'
-    username: 'username'
-    password: 'pass123'
