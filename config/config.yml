@@ -1,4 +1,7 @@
-browser: chrome
+browser: 'chrome'
 headless: false
 use_profile_directory: false
 use_proxy: false
+path_to_profile_dir: "/Users/macbook/Library/Application Support/Google/Chrome/parser2/"
+proxy_address: "194.213.43.166"
+proxy_port: "59316"
