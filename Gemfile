@@ -1,5 +1,5 @@
 # A sample Gemfile
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "selenium-webdriver"
-gem "headless"
+gem 'headless'
+gem 'selenium-webdriver'
