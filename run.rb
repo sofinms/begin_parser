@@ -43,13 +43,13 @@ class BrowserDriver
 
 	def prepare_browser_chrome
 		options = Selenium::WebDriver::Chrome::Options.new
+		options.headless! if @headless
 		options.add_argument('--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.80 Safari/537.36')
 	 	options.add_argument("--user-data-dir=#{@path_to_profile_dir}") if @use_profile_directory
 		options.add_argument("--proxy-server=#{@proxy_host}:#{@proxy_port}") if @use_proxy
-		options.add_argument('--headless') if @headless
 		options.add_argument('--window-size=1920,1080')
 
-		@driver = Selenium::WebDriver.for :chrome, options: options
+		@driver = Selenium::WebDriver.for :chrome, capabilities: options
 	end
 
 	def prepare_browser_firefox
