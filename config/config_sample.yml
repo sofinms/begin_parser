@@ -1,0 +1,26 @@
+autoloading:
+  db: true
+  rmq: false
+  rds: false
+web_browser:
+  browser: 'chrome'
+  headless: false
+  use_profile_directory: false
+  use_proxy: false
+  path_to_profile_dir: '/Users/macbook/Library/Application Support/Google/Chrome/parser2/'
+  proxy_host: '127.0.0.1'
+  proxy_port: '8080'
+  window_width: 1920
+  window_height: 1080
+db:
+  host: '127.0.0.1'
+  port: '3306'
+  name: 'database-name'
+  user: 'username'
+  password: 'password'
+rmq:
+  host: '127.0.0.1'
+  port: 5672
+  vhost: /begin_parser
+  username: begin_parser
+  password: 'password'
