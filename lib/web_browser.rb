@@ -16,9 +16,14 @@ module Parser
       @@driver ||= begin
         case @browser_type
         when 'firefox'
-          profile = Selenium::WebDriver::Firefox::Profile.new
-          profile.from_name(path_to_profile_dir) if @use_profile_directory
-
+          if @use_profile_directory
+            Parser::ProjectLogger.get_logger.info "profile_dir = #{@path_to_profile_dir}"
+            profile = Selenium::WebDriver::Firefox::Profile.new(@path_to_profile_dir)
+          else
+            p "no profile_dir"
+            Parser::ProjectLogger.get_logger.info "no profile_dir"
+            profile = Selenium::WebDriver::Firefox::Profile.new
+          end
           profile['geo.enabled'] = true # appCodeName
           profile['geo.prompt.testing'] = true
           profile['geo.prompt.testing.allow'] = true
@@ -28,23 +33,17 @@ module Parser
           profile['general.platform.override'] = "MacIntel"
           profile['general.oscpu.override'] = "Intel Mac OS X 10.15"
           profile['general.useragent.override'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0'
+          if @use_proxy
+            profile['network.proxy.http'] = @proxy_host
+            profile['network.proxy.http_port'] = @proxy_port
+          end
           if config.web_browser['disable_images']
             profile['permissions.default.image'] = 2
           end
-
-          if config.web_browser['use_proxy']
-            proxy_address = "#{@proxy_host}:#{@proxy_port}"
-            proxy = Selenium::WebDriver::Proxy.new(http: proxy_address, ssl: proxy_address)
-            profile.proxy = proxy
-          end
-
-
-          options = Selenium::WebDriver::Firefox::Options.new
-          options.headless! if @headless
-          options.profile = profile
-
-          driver = Selenium::WebDriver.for(:firefox, capabilities: options)
-
+          args = []
+          args.push '-headless' if config.web_browser['headless']
+          options = Selenium::WebDriver::Firefox::Options.new(args: args, profile: profile)
+          driver = Selenium::WebDriver.for :firefox, options: options
           target_size = Selenium::WebDriver::Dimension.new(config.web_browser['window_width'], config.web_browser['window_height'])
           driver.manage.window.size = target_size
 
