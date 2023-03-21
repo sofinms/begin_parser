@@ -2,15 +2,26 @@
 $:.unshift(File.expand_path('../lib', __dir__))
 
 require 'thor'
-require 'autoload'
+require 'o14/o14'
 
 class App < Thor
   class_option :log_level, type: :string, default: 'ERROR'
   class_option :log_filename, type: :string, default: nil
 
+  def initialize(*args)
+    super
+    initialize_logger
+  end
+
   desc 'simple_parser', 'run simple driver'
   def simple_parser
-    Parser::Example.run(options[:log_level], options[:log_filename])
+    O14::Example.run
+  end
+
+  private
+
+  def initialize_logger
+    O14::ProjectLogger.get_logger options[:log_level], options[:log_filename]
   end
 end
 

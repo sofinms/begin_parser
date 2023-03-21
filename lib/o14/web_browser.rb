@@ -1,9 +1,9 @@
 require 'selenium-webdriver'
 
-module Parser
+module O14
   module WebBrowser
     def self.get_driver
-      config = Parser::Config.get_config
+      config = O14::Config.get_config
 
       @use_profile_directory = config.web_browser['use_profile_directory']
       @path_to_profile_dir = config.web_browser['path_to_profile_dir']
@@ -17,11 +17,11 @@ module Parser
         case @browser_type
         when 'firefox'
           if @use_profile_directory
-            Parser::ProjectLogger.get_logger.info "profile_dir = #{@path_to_profile_dir}"
+            O14::ProjectLogger.get_logger.info "profile_dir = #{@path_to_profile_dir}"
             profile = Selenium::WebDriver::Firefox::Profile.new(@path_to_profile_dir)
           else
             p "no profile_dir"
-            Parser::ProjectLogger.get_logger.info "no profile_dir"
+            O14::ProjectLogger.get_logger.info "no profile_dir"
             profile = Selenium::WebDriver::Firefox::Profile.new
           end
           profile['geo.enabled'] = true # appCodeName
@@ -61,7 +61,7 @@ module Parser
 
           driver = Selenium::WebDriver.for :chrome, capabilities: options
         else
-          Parser::ProjectLogger.get_logger.error "Error: browser not detected in config"
+          O14::ProjectLogger.get_logger.error "Error: browser not detected in config"
           exit
         end
         driver
@@ -70,7 +70,7 @@ module Parser
 
     def self.restart_browser
       quit_browser
-      Parser::ProjectLogger.get_logger.info 'Restart browser'
+      O14::ProjectLogger.get_logger.info 'Restart browser'
       get_driver
     end
 

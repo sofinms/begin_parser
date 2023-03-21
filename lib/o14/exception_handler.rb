@@ -1,4 +1,4 @@
-module Parser
+module O14
     class ExceptionHandler
         @logger = O14::ProjectLogger.get_logger
 

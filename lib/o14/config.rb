@@ -1,9 +1,9 @@
 require 'closed_struct'
 require 'yaml'
 
-module Parser
+module O14
   class Config
-    CONFIG_PATH = File.join(__dir__, '..', 'config', 'config.yml')
+    CONFIG_PATH = File.join(__dir__, '..', '..', 'config', 'config.yml')
 
     def self.get_config
       @config ||= ClosedStruct.new(load_config)
