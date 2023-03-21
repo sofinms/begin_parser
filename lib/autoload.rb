@@ -8,6 +8,7 @@ module Parser
   autoload :DB, 'db'  if config.autoloading['db']
   autoload :RMQ, 'rmq' if config.autoloading['rmq']
   autoload :RDS, 'rds' if config.autoloading['rds']
+  autoload :ExceptionHandler, 'rds' if config.autoloading['exception_handler']
 
   autoload :Example, 'example'
 end
