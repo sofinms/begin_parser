@@ -15,7 +15,7 @@ web_browser:
 db:
   host: '127.0.0.1'
   port: '3306'
-  name: 'database-name'
+  database: 'database-name'
   user: 'username'
   password: 'password'
 rmq:
