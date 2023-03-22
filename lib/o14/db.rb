@@ -1,7 +1,7 @@
 require 'sequel'
 require 'mysql2'
 
-module Parser
+module O14
   class DB
     def self.get_db
 			@db ||= begin

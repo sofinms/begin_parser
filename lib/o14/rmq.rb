@@ -3,7 +3,7 @@
 require 'json'
 require 'bunny'
 
-module Parser
+module O14
   class RMQ
 		APP_ID = 'uw_youtube'
 		def self.get_channel

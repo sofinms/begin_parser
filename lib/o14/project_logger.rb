@@ -1,6 +1,6 @@
 require 'logger'
 
-module Parser
+module O14
   class ProjectLogger
 
     def self.get_logger(log_level = 'ERROR', log_filename = nil)
