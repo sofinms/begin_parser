@@ -9,7 +9,5 @@ module O14
   autoload :RMQ, 'o14/rmq' if @config.autoloading['rmq']
   autoload :RDS, 'o14/rds' if @config.autoloading['rds']
   autoload :ExceptionHandler, 'o14/rds' if @config.autoloading['exception_handler']
-
-  autoload :Example, 'o14/example'
 end
 

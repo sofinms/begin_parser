@@ -2,7 +2,7 @@ require 'headless'
 require 'selenium-webdriver'
 require 'yaml'
 
-module O14
+module Parser
   class Example
     def self.run
       logger = O14::ProjectLogger.get_logger
