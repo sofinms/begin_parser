@@ -22,6 +22,7 @@ module O14
 				db = Sequel.connect(db_connection_params)
 
 			 db.extension(:connection_validator)
+			 db.pool.connection_validation_timeout = -1
 
 			 at_exit { disconnect }
 
