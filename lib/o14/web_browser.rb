@@ -20,7 +20,6 @@ module O14
             O14::ProjectLogger.get_logger.info "profile_dir = #{@path_to_profile_dir}"
             profile = Selenium::WebDriver::Firefox::Profile.new(@path_to_profile_dir)
           else
-            p "no profile_dir"
             O14::ProjectLogger.get_logger.info "no profile_dir"
             profile = Selenium::WebDriver::Firefox::Profile.new
           end
@@ -50,7 +49,7 @@ module O14
           driver
         when 'chrome'
           options = Selenium::WebDriver::Chrome::Options.new
-          options.headless! if @headless
+          options.add_argument('--headless=new') if @headless
           options.add_argument('--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.80 Safari/537.36')
           options.add_argument("--user-data-dir=#{@path_to_profile_dir}") if @use_profile_directory
           options.add_argument("--proxy-server=#{@proxy_host}:#{@proxy_port}") if @use_proxy
@@ -59,9 +58,9 @@ module O14
             options.add_argument('--blink-settings=imagesEnabled=false')
           end
 
-          driver = Selenium::WebDriver.for :chrome, capabilities: options
+          driver = Selenium::WebDriver.for :chrome, options: options
         else
-          O14::ProjectLogger.get_logger.error "Error: browser not detected in config"
+          O14::ProjectLogger.get_logger.error "Error: browser parameter is not specified in the config.yml"
           exit
         end
         driver
