@@ -1,2 +1,3 @@
-To run use:
-ruby run.rb
+1. run: bundle install
+2. create config/config.yml file (similar to config_sample.yml)
+3. run example script: ruby bin/run simple_parser --log-level=DEBUG
