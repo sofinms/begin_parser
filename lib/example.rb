@@ -1,7 +1,3 @@
-require 'headless'
-require 'selenium-webdriver'
-require 'yaml'
-
 module Parser
   class Example
     def self.run
@@ -9,6 +5,7 @@ module Parser
       driver = O14::WebBrowser.get_driver
       config = O14::Config.get_config
       db = O14::DB.get_db  if config.autoloading['db']
+      redis = O14::RDS.instance  if config.autoloading['rds']
       
       driver.navigate.to 'https://google.com'
       sleep 30
