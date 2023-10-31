@@ -1,5 +1,5 @@
 autoloading:
-  db: true
+  db: false
   rmq: false
   rds: false
 web_browser:
@@ -12,6 +12,7 @@ web_browser:
   proxy_port: '8080'
   window_width: 1920
   window_height: 1080
+  disable_images: false
 db:
   host: '127.0.0.1'
   port: '3306'
