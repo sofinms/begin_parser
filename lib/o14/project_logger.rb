@@ -8,7 +8,7 @@ module O14
         logger = if log_filename.nil?
             Logger.new($stdout)
           else
-            Logger.new(File.join(__dir__, '..', 'logs', log_filename), 10, 10_240_000)
+            Logger.new(File.join(__dir__, '..', '..', 'logs', log_filename), 5, 10_240_000)
           end
         logger.datetime_format = '%Y-%m-%d %H:%M:%S'
         logger.formatter = proc do |severity, datetime, _, msg|
