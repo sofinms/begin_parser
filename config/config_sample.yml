@@ -1,7 +1,3 @@
-autoloading:
-  db: false
-  rmq: false
-  rds: false
 web_browser:
   browser: 'chrome'
   headless: false
