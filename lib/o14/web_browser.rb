@@ -63,6 +63,7 @@ module O14
           O14::ProjectLogger.get_logger.error "Error: browser parameter is not specified in the config.yml"
           exit
         end
+        at_exit { quit_browser }
         driver
       end
     end
