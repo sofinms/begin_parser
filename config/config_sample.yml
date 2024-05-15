@@ -1,9 +1,9 @@
 web_browser:
   browser: 'chrome'
-  headless: false
-  use_profile_directory: false
+  headless: true
+  use_profile_directory: true
   use_proxy: false
-  path_to_profile_dir: '/Users/macbook/Library/Application Support/Google/Chrome/parser2/'
+  path_to_profile_dir: "/home/nik/.config/google-chrome/Default/'Login Data'"
   proxy_host: '127.0.0.1'
   proxy_port: '8080'
   window_width: 1920
@@ -12,9 +12,10 @@ web_browser:
 db:
   host: '127.0.0.1'
   port: '3306'
-  database: 'database-name'
-  user: 'username'
-  password: 'password'
+  database: 'mosaic24_test'
+  user: 'root'
+  password: 'example'
+  table: 'goods'
 rmq:
   host: '127.0.0.1'
   port: 5672
