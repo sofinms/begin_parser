@@ -14,9 +14,14 @@ class App < Thor
     initialize_logger
   end
 
-  desc 'simple_parser', 'run simple driver'
-  def simple_parser
-    Parser::Example.run
+  # desc 'simple_parser', 'run simple driver'
+  # def simple_parser
+  #   Parser::Example.run
+  # end
+
+  desc 'mosaic_parser', 'run mosaic driver'
+  def mosaic_parser
+    Parser::MosaicGoodsParser.run
   end
 
   private
