@@ -14,9 +14,9 @@ class App < Thor
     initialize_logger
   end
 
-  desc 'simple_parser', 'run simple driver'
-  def simple_parser
-    Parser::Example.run
+  desc 'simple_parser URL', 'run simple parser with given URL'
+  def simple_parser(url)
+    Parser::Example.run(url)
   end
 
   private
